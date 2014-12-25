@@ -5,8 +5,12 @@ import (
 	"strings"
 )
 
+var OsEnv = func() []string {
+	return os.Environ()
+}
+
 func All() map[string]string {
-	data := os.Environ()
+	data := OsEnv()
 	items := make(map[string]string)
 	for _, val := range data {
 		splits := strings.SplitN(val, "=", 2)
@@ -18,7 +22,7 @@ func All() map[string]string {
 }
 
 func ListKeys() []string {
-	data := os.Environ()
+	data := OsEnv()
 	var keys []string
 	for _, val := range data {
 		splits := strings.SplitN(val, "=", 2)
