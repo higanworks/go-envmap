@@ -1,5 +1,6 @@
 ## Usage
 
+[![Circle CI](https://circleci.com/gh/higanworks/envmap.svg?style=svg)](https://circleci.com/gh/higanworks/envmap)
 
 ```
 package main
