@@ -10,11 +10,12 @@ func TestAll(t *testing.T) {
 	OsEnv = func() []string {
 		var hoge []string
 		hoge = append(hoge, "HOGE=hogehoge")
+		hoge = append(hoge, "PIYO=piyopiyo")
 		return hoge
 	}
 
 	// assert equality
-	assert.Equal(t, All(), map[string]string{"HOGE": "hogehoge"}, "they should be equal")
+	assert.Equal(t, All(), map[string]string{"HOGE": "hogehoge", "PIYO": "piyopiyo"}, "they should be equal")
 	OsEnv = oldOsEnv
 }
 
@@ -23,10 +24,11 @@ func TestListKeys(t *testing.T) {
 	OsEnv = func() []string {
 		var hoge []string
 		hoge = append(hoge, "HOGE=hogehoge")
+		hoge = append(hoge, "PIYO=piyopiyo")
 		return hoge
 	}
 
 	// assert equality
-	assert.Equal(t, ListKeys(), []string{"HOGE"}, "they should be equal")
+	assert.Equal(t, ListKeys(), []string{"HOGE", "PIYO"}, "they should be equal")
 	OsEnv = oldOsEnv
 }
