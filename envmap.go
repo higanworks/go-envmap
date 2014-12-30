@@ -2,6 +2,7 @@ package envmap
 
 import (
 	"os"
+	"regexp"
 	"strings"
 )
 
@@ -17,6 +18,21 @@ func All() map[string]string {
 		key := splits[0]
 		value := splits[1]
 		items[key] = value
+	}
+	return items
+}
+
+func Matched(rule string) map[string]string {
+	data := OsEnv()
+	items := make(map[string]string)
+	for _, val := range data {
+		splits := strings.SplitN(val, "=", 2)
+		matched_flag, _ := regexp.MatchString(rule, splits[0])
+		if matched_flag {
+			key := splits[0]
+			value := splits[1]
+			items[key] = value
+		}
 	}
 	return items
 }
