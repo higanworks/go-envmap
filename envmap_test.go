@@ -6,8 +6,8 @@ import (
 )
 
 func TestAll(t *testing.T) {
-	oldOsEnv := OsEnv
-	OsEnv = func() []string {
+	oldosEnv := osEnv
+	osEnv = func() []string {
 		var hoge []string
 		hoge = append(hoge, "HOGE=hogehoge")
 		hoge = append(hoge, "PIYO=piyopiyo")
@@ -16,12 +16,12 @@ func TestAll(t *testing.T) {
 
 	// assert equality
 	assert.Equal(t, All(), map[string]string{"HOGE": "hogehoge", "PIYO": "piyopiyo"}, "they should be equal")
-	OsEnv = oldOsEnv
+	osEnv = oldosEnv
 }
 
 func TestMatched(t *testing.T) {
-	oldOsEnv := OsEnv
-	OsEnv = func() []string {
+	oldosEnv := osEnv
+	osEnv = func() []string {
 		var hoge []string
 		hoge = append(hoge, "HOGE=hogehoge")
 		hoge = append(hoge, "PIYO=piyopiyo")
@@ -32,12 +32,12 @@ func TestMatched(t *testing.T) {
 	assert.Equal(t, Matched("^HO"), map[string]string{"HOGE": "hogehoge"}, "they should be equal")
 	assert.Equal(t, Matched("YO$"), map[string]string{"PIYO": "piyopiyo"}, "they should be equal")
 	assert.Equal(t, Matched(".*O.*"), map[string]string{"HOGE": "hogehoge", "PIYO": "piyopiyo"}, "they should be equal")
-	OsEnv = oldOsEnv
+	osEnv = oldosEnv
 }
 
 func TestListKeys(t *testing.T) {
-	oldOsEnv := OsEnv
-	OsEnv = func() []string {
+	oldosEnv := osEnv
+	osEnv = func() []string {
 		var hoge []string
 		hoge = append(hoge, "HOGE=hogehoge")
 		hoge = append(hoge, "PIYO=piyopiyo")
@@ -46,5 +46,5 @@ func TestListKeys(t *testing.T) {
 
 	// assert equality
 	assert.Equal(t, ListKeys(), []string{"HOGE", "PIYO"}, "they should be equal")
-	OsEnv = oldOsEnv
+	osEnv = oldosEnv
 }

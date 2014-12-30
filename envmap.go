@@ -1,3 +1,4 @@
+// Create map object of environment variables.
 package envmap
 
 import (
@@ -6,13 +7,13 @@ import (
 	"strings"
 )
 
-var OsEnv = func() []string {
+var osEnv = func() []string {
 	return os.Environ()
 }
 
 // Returns all environment variables as key-value map.
 func All() map[string]string {
-	data := OsEnv()
+	data := osEnv()
 	items := make(map[string]string)
 	for _, val := range data {
 		splits := strings.SplitN(val, "=", 2)
@@ -25,7 +26,7 @@ func All() map[string]string {
 
 // Returns filtered by matched keys of environment variables as key-value.
 func Matched(rule string) map[string]string {
-	data := OsEnv()
+	data := osEnv()
 	items := make(map[string]string)
 	for _, val := range data {
 		splits := strings.SplitN(val, "=", 2)
@@ -41,7 +42,7 @@ func Matched(rule string) map[string]string {
 
 // Returns Keys of all environment variables.
 func ListKeys() []string {
-	data := OsEnv()
+	data := osEnv()
 	var keys []string
 	for _, val := range data {
 		splits := strings.SplitN(val, "=", 2)
