@@ -10,6 +10,7 @@ var OsEnv = func() []string {
 	return os.Environ()
 }
 
+// Returns all environment variables as key-value map.
 func All() map[string]string {
 	data := OsEnv()
 	items := make(map[string]string)
@@ -22,6 +23,7 @@ func All() map[string]string {
 	return items
 }
 
+// Returns filtered by matched keys of environment variables as key-value.
 func Matched(rule string) map[string]string {
 	data := OsEnv()
 	items := make(map[string]string)
@@ -37,6 +39,7 @@ func Matched(rule string) map[string]string {
 	return items
 }
 
+// Returns Keys of all environment variables.
 func ListKeys() []string {
 	data := OsEnv()
 	var keys []string
