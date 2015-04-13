@@ -7,11 +7,11 @@ Create map object of environment variables.
 
 ## Installation
 
-`go get github.com/higanworks/envmap`
+`go get github.com/higanworks/go-envmap`
 
 ## Usage
 
-`import "github.com/higanworks/envmap"`
+`import "github.com/higanworks/go-envmap"`
 
 ## Functions
 
@@ -35,7 +35,7 @@ package main
 
 import (
   "fmt"
-  "github.com/higanworks/envmap"
+  "github.com/higanworks/go-envmap"
 )
 
 func main() {
