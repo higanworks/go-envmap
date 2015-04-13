@@ -35,7 +35,7 @@ package main
 
 import (
   "fmt"
-  "github.com/higanworks/go-envmap"
+  envmap "github.com/higanworks/go-envmap"
 )
 
 func main() {
